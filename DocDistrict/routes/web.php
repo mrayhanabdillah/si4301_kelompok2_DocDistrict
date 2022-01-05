@@ -25,3 +25,5 @@ Route::get('/contact', function () {
 Route::get('/guide', function () {
     return view('guide');
 });
+
+Route::resource('/user', user_controller::class);
