@@ -1,0 +1,40 @@
+.box1{
+    padding: 0px 0px 0px 450px;
+}
+.box2{
+    padding: 75px 0px 0px 0px;
+}
+.box3{
+    margin-top:50px;
+}
+.gambarprofil{
+    width: 100%;
+    height: 30rem;
+}
+.gambarcar{
+    height: 400px;
+    filter: brightness(50%);
+}
+.border{
+    border-radius: 3px;
+}
+
+.sm{
+    position: relative;
+}
+
+.footer{
+    position: relative;
+    background-color: #149BFC;
+    margin-top:15px;
+    padding: 50px 0px 50px 0px;
+}
+
+.formborder{
+    border-radius: 50px;
+}
+
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
