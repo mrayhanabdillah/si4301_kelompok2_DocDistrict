@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <title>
-        Project X
+        Desa Cipanas | About
     </title>
 </head>
 
