@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users_model;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class user_controller extends Controller
 {
@@ -113,14 +114,15 @@ class user_controller extends Controller
                     'nik' => $request ->nik
         
                 ]);
-                $request->session()->flush();
-                $request->session()->put('login', true);
-                $request->session()->put('nama', $data -> nama);
-                $request->session()->put('email', $data -> email);
-                $request->session()->put('ttl', $data -> ttl);
-                $request->session()->put('noHP', $data -> noHP);
-                $request->session()->put('alamat', $data -> alamat);
-                $request->session()->put('nik', $data -> nik);
+                session(['updated' => true]);
+                session(['nama1' => $data -> nama]);
+                session(['id1' => $data -> id]);
+                session(['email1' => $data -> email]);
+                session(['ttl1' => $data -> ttl]);
+                session(['noHP1' => $data -> noHP]);
+                session(['alamat1' => $data -> alamat]);
+                session(['nik1' => $data -> nik]);
+                
                 return redirect("/");
             }
             return redirect("/user/{{ session('id') }}/edit")->with('passsalah1','Gagal Update! Password anda salah!');
