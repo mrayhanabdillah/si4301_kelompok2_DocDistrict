@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('style.css')}}">
+    <link href="<?php echo e(asset('css/bootstrap.css')); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('style.css')); ?>">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="icon" href="gambar/logo.png">
     <title>
@@ -18,7 +18,7 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/popper.min.js"></script>
 
-    @extends('modal')
+    
 
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #149BFC;">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -77,52 +77,56 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                @if (session('berhasil'))
+                <?php if(session('berhasil')): ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ session('nama') }}
+                            <?php echo e(session('nama')); ?>
+
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                            <li><a class="dropdown-item" href="<?php echo e(route('logout')); ?>">Logout</a></li>
                         </ul>
                     </li>
-                @else
+                <?php else: ?>
                     <li class="nav-item">
                         <a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#login">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#signUp">Sign Up</a>
                     </li>
-                @endif
+                <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
 
-    @if (session('berhasil_login'))
+    <?php if(session('berhasil_login')): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('berhasil_login') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+            <?php echo e(session('berhasil_login')); ?>
 
-    @if (session('gagal'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('gagal') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    @endif
-    @if (session('logout'))
+    <?php endif; ?>
+
+    <?php if(session('gagal')): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('logout') }}
+            <?php echo e(session('gagal')); ?>
+
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    @endif
+    <?php endif; ?>
+    <?php if(session('logout')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo e(session('logout')); ?>
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
 
     <div class="container sm">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -260,4 +264,5 @@
         </div>
     </div>
     <!-- anjay pake javascript -->
-    <script src="{{asset('app.js')}}"></script>
+    <script src="<?php echo e(asset('app.js')); ?>"></script>
+<?php echo $__env->make('modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\si4301_kelompok2_DocDistrict\DocDistrict\resources\views/home.blade.php ENDPATH**/ ?>

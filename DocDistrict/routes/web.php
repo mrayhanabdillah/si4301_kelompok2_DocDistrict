@@ -27,3 +27,6 @@ Route::get('/guide', function () {
 });
 
 Route::resource('/user', user_controller::class);
+Route::post('login', 'user_controller@login')->name('login');
+Route::get('logout', 'user_controller@logout')->name('logout');
+

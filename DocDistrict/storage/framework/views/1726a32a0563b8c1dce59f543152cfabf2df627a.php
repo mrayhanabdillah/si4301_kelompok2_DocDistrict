@@ -5,10 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('style.css')}}">
+    <link href="<?php echo e(asset('css/bootstrap.css')); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('style.css')); ?>">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="icon" href="gambar/logo.png">
     <title>
         Desa Cipanas | Home
     </title>
@@ -18,7 +17,73 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/popper.min.js"></script>
 
-    @extends('modal')
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3>Login</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold">Email address</label>
+                            <input type="email" class="form-control formborder" id="email"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="mb-2">
+                            <label for="pass" class="form-label fw-bold">Password</label>
+                            <input type="password" class="form-control formborder" id="pass" placeholder="Password">
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="showpass">
+                            <label class="form-check-label" for="showpass">
+                                Show the Password
+                            </label>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button"
+                                class="btn btn-primary d-grid gap-2 col-6 mx-auto formborder">Login</button>
+                        </div>
+                        <p style="color:slategray;">Dont have an account yet? <a href="" class="fw-bold" style="text-decoration:none;color:black;" data-bs-target="#signUp" data-bs-toggle="modal">Register for Free</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signUp" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3>Sign Up</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nama" class="form-label fw-bold">Name</label>
+                            <input type="text" class="form-control formborder" id="nama" placeholder="Input your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold">Email address</label>
+                            <input type="email" class="form-control formborder" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="noHp" class="form-label fw-bold">Telephone</label>
+                            <input type="text" class="form-control formborder" id="noHp" placeholder="Input your Phone Number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pass" class="form-label fw-bold">Password</label>
+                            <input type="password" class="form-control formborder" id="pass" placeholder="Password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="passcon" class="form-label fw-bold">Password Confirm</label>
+                            <input type="password" class="form-control formborder" id="passcon" placeholder="Password Confirm">
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary d-grid gap-2 col-6 mx-auto formborder">Sign Up</button>
+                        </div>
+                        <p style="color:slategray;">Already have an account? <a href="" class="fw-bold" style="text-decoration:none;color:black;" data-bs-target="#login" data-bs-toggle="modal">Sign In</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #149BFC;">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -77,52 +142,16 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                @if (session('berhasil'))
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ session('nama') }}
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
-                        </ul>
-                    </li>
-                @else
                     <li class="nav-item">
                         <a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#login">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#signUp">Sign Up</a>
                     </li>
-                @endif
                 </ul>
             </div>
         </div>
     </nav>
-
-    @if (session('berhasil_login'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('berhasil_login') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
-    @if (session('gagal'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('gagal') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session('logout'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('logout') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
 
     <div class="container sm">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -259,5 +288,6 @@
             <div class="container" style="width: 100%; height: 3px;background:white;"></div>
         </div>
     </div>
-    <!-- anjay pake javascript -->
-    <script src="{{asset('app.js')}}"></script>
+<!-- anjay pake javascript -->
+    <script src="<?php echo e(asset('app.js')); ?>"></script>
+    <?php /**PATH C:\xampp\htdocs\si4301_kelompok2_DocDistrict\project-x\resources\views/home.blade.php ENDPATH**/ ?>

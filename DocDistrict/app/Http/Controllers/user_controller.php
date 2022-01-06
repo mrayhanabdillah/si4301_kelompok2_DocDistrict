@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\users_model;
+use Illuminate\Support\Facades\Hash;
 
 class user_controller extends Controller
 {
@@ -14,7 +15,24 @@ class user_controller extends Controller
      */
     public function index()
     {
-        //
+        
+    }
+
+    public function login(Request $request){
+        $data = users_model::where('email',$request->email)->firstOrFail();
+        if($request->password == $data->password){
+            session(['berhasil' => true]);
+            session(['nama' => $data -> nama]);
+            return redirect('/')->with('berhasil_login','Berhasil Login!');
+        }else{
+            return redirect('/')->with('gagal','Email atau Password salah!');
+        }
+    }
+
+
+    public function logout(Request $request){
+        $request->session()->flush();
+        return redirect('/')->with('logout','Anda telah melakukan logout!');
     }
 
     /**

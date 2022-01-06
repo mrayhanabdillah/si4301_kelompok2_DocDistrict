@@ -3,8 +3,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <h3>Login</h3>
-                <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                <form action="<?php echo e(route('login')); ?>" method="POST" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>
                     <div class="mb-3">
                         <label for="email" class="form-label fw-bold">Email address</label>
                         <input type="email" class="form-control formborder" id="email" name="email" placeholder="username@example.com">
@@ -38,7 +38,7 @@
             <div class="modal-body">
                 <h3>Sign Up</h3>
                 <form action="/user" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    <?php echo csrf_field(); ?>
                     <div class="mb-3">
                         <label for="nama" class="form-label fw-bold">Name</label>
                         <input type="text" class="form-control formborder" id="nama" name="nama" placeholder="Full Name">
@@ -72,4 +72,4 @@
             </div>
         </div>
     </div>
-</div>
+</div><?php /**PATH C:\xampp\htdocs\si4301_kelompok2_DocDistrict\DocDistrict\resources\views/modal.blade.php ENDPATH**/ ?>
