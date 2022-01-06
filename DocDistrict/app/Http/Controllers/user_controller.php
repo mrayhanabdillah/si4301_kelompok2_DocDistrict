@@ -21,8 +21,14 @@ class user_controller extends Controller
     public function login(Request $request){
         $data = users_model::where('email',$request->email)->firstOrFail();
         if($request->password == $data->password){
-            session(['berhasil' => true]);
+            session(['login' => true]);
             session(['nama' => $data -> nama]);
+            session(['id' => $data -> id]);
+            session(['email' => $data -> email]);
+            session(['ttl' => $data -> ttl]);
+            session(['noHP' => $data -> noHP]);
+            session(['alamat' => $data -> alamat]);
+            session(['nik' => $data -> nik]);
             return redirect('/')->with('berhasil_login','Berhasil Login!');
         }else{
             return redirect('/')->with('gagal','Email atau Password salah!');
@@ -71,7 +77,8 @@ class user_controller extends Controller
      */
     public function show($id)
     {
-        //
+        $user = users_model::find($id);
+        return view('user.profile', compact('user'));
     }
 
     /**
@@ -82,7 +89,7 @@ class user_controller extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.profile');
     }
 
     /**
@@ -94,7 +101,31 @@ class user_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = users_model::where('email',$request->email)->firstOrFail();
+        if($request->pass == $request->passcon){
+            if ($request->pass == $data->password){
+                users_model::find($id)->update([
+                    'nama' => $request ->nama,
+                    'email' => $request ->email,
+                    'noHP' => $request ->noHP,
+                    'ttl' => $request ->ttl,
+                    'alamat' => $request ->alamat,
+                    'nik' => $request ->nik
+        
+                ]);
+                $request->session()->flush();
+                $request->session()->put('login', true);
+                $request->session()->put('nama', $data -> nama);
+                $request->session()->put('email', $data -> email);
+                $request->session()->put('ttl', $data -> ttl);
+                $request->session()->put('noHP', $data -> noHP);
+                $request->session()->put('alamat', $data -> alamat);
+                $request->session()->put('nik', $data -> nik);
+                return redirect("/");
+            }
+            return redirect("/user/{{ session('id') }}/edit")->with('passsalah1','Gagal Update! Password anda salah!');
+        }
+        return redirect("/user/{{ session('id') }}/edit")->with('passsalah2','Gagal Update! Password dan Password Confirm anda tidak sama!');
     }
 
     /**
