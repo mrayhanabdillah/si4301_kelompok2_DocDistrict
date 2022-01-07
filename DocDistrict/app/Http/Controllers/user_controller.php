@@ -67,7 +67,7 @@ class user_controller extends Controller
             'noHP' => $request ->noHP
         ]);
 
-        return redirect('/');
+        return redirect('/')->with('berhasil_regis','Berhasil Registrasi!');
     }
 
     /**
@@ -114,14 +114,6 @@ class user_controller extends Controller
                     'nik' => $request ->nik
         
                 ]);
-                session(['updated' => true]);
-                session(['nama1' => $data -> nama]);
-                session(['id1' => $data -> id]);
-                session(['email1' => $data -> email]);
-                session(['ttl1' => $data -> ttl]);
-                session(['noHP1' => $data -> noHP]);
-                session(['alamat1' => $data -> alamat]);
-                session(['nik1' => $data -> nik]);
                 
                 return redirect("/");
             }

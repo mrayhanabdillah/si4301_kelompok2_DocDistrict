@@ -136,6 +136,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+    @if (session('berhasil_regis'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('berhasil_regis') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     @if (session('gagal'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">

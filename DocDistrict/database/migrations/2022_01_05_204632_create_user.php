@@ -23,6 +23,19 @@ class CreateUser extends Migration
             $table->string('alamat')->nullable();
             $table->string('nik')->nullable();
         });
+
+        Schema::create('document', function (Blueprint $table) {
+            $table->bigIncrements('id_doc')->unsigned();
+            $table->string('title_doc');
+            $table->string('desc_doc');
+        });
+
+        Schema::create('admin', function (Blueprint $table) {
+            $table->bigIncrements('id_admin')->unsigned();
+            $table->string('nama_admin');
+            $table->string('email');
+            $table->string('password');
+        });
     }
 
     /**
@@ -33,5 +46,7 @@ class CreateUser extends Migration
     public function down()
     {
         Schema::dropIfExists('user');
+        Schema::dropIfExists('document');
+        
     }
 }
