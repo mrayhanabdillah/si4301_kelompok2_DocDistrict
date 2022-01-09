@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\users_model;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,40 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    if (session('login')){
+        $id = session('id');
+        $user = users_model::where('id',$id)->firstOrFail();
+        return view('home',compact('user'));
+    }else{
+        return view('home');
+    }
 });
 Route::get('/about', function () {
-    return view('about');
+    if (session('login')){
+        $id = session('id');
+        $user = users_model::where('id',$id)->firstOrFail();
+        return view('about',compact('user'));
+    }else{
+        return view('about');
+    }
 });
 Route::get('/contact', function () {
-    return view('contact');
+    if (session('login')){
+        $id = session('id');
+        $user = users_model::where('id',$id)->firstOrFail();
+        return view('contact',compact('user'));
+    }else{
+        return view('contact');
+    }
 });
 Route::get('/guide', function () {
-    return view('guide');
+    if (session('login')){
+        $id = session('id');
+        $user = users_model::where('id',$id)->firstOrFail();
+        return view('guide',compact('user'));
+    }else{
+        return view('guide');
+    }
 });
 
 Route::resource('/user', user_controller::class);

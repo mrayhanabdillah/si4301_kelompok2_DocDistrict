@@ -14,8 +14,23 @@ class user_controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    // public function createSession()
+    // {
+    //     $data = users_model::where('id',Session::get('id'))->firstOrFail();
+    //     if (session['login']){
+    //         Session::put('user',['nama'=> $data->nama,'email'=>$data->email,'ttl'=>$data->ttl,'noHP'=>$data->noHP,'alamat'=>$data->alamat,'nik'=>$data->nik]);
+    //         if (session['updated']){
+    //             Session::push('nama', $data ->nama);
+    //             Session::push('email', $data ->email);
+    //             Session::push('ttl', $data ->ttl);
+    //             Session::push('noHP', $data ->noHP);
+    //             Session::push('alamat', $data ->alamat);
+    //             Session::push('nik', $data ->nik);
+    //         }
+    //     }
+    // }
+
+    public function index(){
         
     }
 
@@ -23,13 +38,7 @@ class user_controller extends Controller
         $data = users_model::where('email',$request->email)->firstOrFail();
         if($request->password == $data->password){
             session(['login' => true]);
-            session(['nama' => $data -> nama]);
             session(['id' => $data -> id]);
-            session(['email' => $data -> email]);
-            session(['ttl' => $data -> ttl]);
-            session(['noHP' => $data -> noHP]);
-            session(['alamat' => $data -> alamat]);
-            session(['nik' => $data -> nik]);
             return redirect('/')->with('berhasil_login','Berhasil Login!');
         }else{
             return redirect('/')->with('gagal','Email atau Password salah!');
@@ -78,8 +87,8 @@ class user_controller extends Controller
      */
     public function show($id)
     {
-        $user = users_model::find($id);
-        return view('user.profile', compact('user'));
+        $users = users_model::find($id);
+        return view('user.profile', compact('users'));
     }
 
     /**
@@ -90,7 +99,8 @@ class user_controller extends Controller
      */
     public function edit($id)
     {
-        return view('user.profile');
+        $users = users_model::where('id',$id)->firstOrFail();
+        return view('user.profile',compact('users'));
     }
 
     /**
@@ -114,12 +124,23 @@ class user_controller extends Controller
                     'nik' => $request ->nik
         
                 ]);
+                // Session::flush();
+                // session(['login' => true]);
+                // Session::put('user',['nama'=> $request->nama,'id'=>$data->id,'email'=>$request->email,'ttl'=>$request->ttl,'noHP'=>$request->noHP,'alamat'=>$request->alamat,'nik'=>$request->nik]);
+                // // Session::forget(['nama','email','ttl','noHP','alamat','nik']);
+                // // Session::put('nama', $data ->nama);
+                // // Session::put('email', $data ->email);
+                // // Session::put('ttl', $data ->ttl);
+                // // Session::put('noHP', $data ->noHP);
+                // // Session::put('alamat', $data ->alamat);
+                // // Session::put('nik', $data ->nik);
+
                 
                 return redirect("/");
             }
-            return redirect("/user/{{ session('id') }}/edit")->with('passsalah1','Gagal Update! Password anda salah!');
+            return redirect("/user/{{ Session::get('user')['id'] }}/edit")->with('passsalah1','Gagal Update! Password anda salah!');
         }
-        return redirect("/user/{{ session('id') }}/edit")->with('passsalah2','Gagal Update! Password dan Password Confirm anda tidak sama!');
+        return redirect("/user/{{ Session::get('user')['id'] }}/edit")->with('passsalah2','Gagal Update! Password dan Password Confirm anda tidak sama!');
     }
 
     /**

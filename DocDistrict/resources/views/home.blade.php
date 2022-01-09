@@ -107,7 +107,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ session('nama') }}
+                            {{ $user -> nama }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/user/{{ session('id') }}/edit">Profile</a></li>
