@@ -112,11 +112,11 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo e(session('nama')); ?>
+                                <i class="fa fa-user" aria-hidden="true"></i> <?php echo e($users->nama); ?>
 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="/user/<?php echo e(session('id')); ?>/edit">Profile</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -138,46 +138,31 @@
         </div>
     </nav>
 
-    <?php if(session('passsalah1')): ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <?php echo e(session('passsalah1')); ?>
-
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-    <?php if(session('passsalah2')): ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <?php echo e(session('passsalah2')); ?>
-
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-
     <div class="container sm box3 shadow-lg p-3 mb-5 bg-body rounded">
         <h3 class="text-center">Profile</h3>
-        <form action="/user/<?php echo e(session('id')); ?>" method="POST" enctype="multipart/form-data">
+        <form action="/user/<?php echo e(Session::get('id')); ?>" method="POST" enctype="multipart/form-data">
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
                         <label for="nama" class="form-label fw-bold">Name</label>
-                        <input type="text" class="form-control formborder" id="nama" name="nama" value="<?php echo e(session('nama')); ?>">
+                        <input type="text" class="form-control formborder" id="nama" name="nama" value="<?php echo e($users->nama); ?>">
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         <label for="email" class="form-label fw-bold">Email</label>
-                        <input type="email" class="form-control formborder" id="email" name="email" value="<?php echo e(session('email')); ?>"
+                        <input type="email" class="form-control formborder" id="email" name="email" value="<?php echo e($users->email); ?>"
                             readonly>
                     </div>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="noHP" class="form-label fw-bold">Nomor HP</label>
-                <input type="text" class="form-control formborder" id="noHP" name="noHP" value="<?php echo e(session('noHP')); ?>">
+                <input type="text" class="form-control formborder" id="noHP" name="noHP" value="<?php echo e($users->noHP); ?>">
             </div>
-            <?php if(session('ttl') == null): ?>
+            <?php if(($users->ttl) == null): ?>
             <div class="mb-3">
                 <label for="ttl" class="form-label fw-bold">Tanggal Lahir</label>
                 <input type="date" class="form-control formborder" id="ttl" name="ttl">
@@ -185,10 +170,10 @@
             <?php else: ?>
             <div class="mb-3">
                 <label for="ttl" class="form-label fw-bold">Tanggal Lahir</label>
-                <input type="date" class="form-control formborder" id="ttl" name="ttl" value="<?php echo e(session('ttl')); ?>">
+                <input type="date" class="form-control formborder" id="ttl" name="ttl" value="<?php echo e($users->ttl); ?>">
             </div>
             <?php endif; ?>
-            <?php if(session('alamat') == null): ?>
+            <?php if(($users->alamat) == null): ?>
             <div class="mb-3">
                 <label for="alamat" class="form-label fw-bold">Alamat</label>
                 <input type="text" class="form-control formborder" id="alamat" name="alamat" placeholder="Jl Buah Batu">
@@ -196,10 +181,10 @@
             <?php else: ?>
             <div class="mb-3">
                 <label for="alamat" class="form-label fw-bold">Alamat</label>
-                <input type="text" class="form-control formborder" id="alamat" name="alamat" value="<?php echo e(session('alamat')); ?>">
+                <input type="text" class="form-control formborder" id="alamat" name="alamat" value="<?php echo e($users->alamat); ?>">
             </div>
             <?php endif; ?>
-            <?php if(session('nik') == null): ?>
+            <?php if(($users->nik) == null): ?>
             <div class="mb-3">
                 <label for="nik" class="form-label fw-bold">NIK</label>
                 <input type="text" class="form-control formborder" id="nik" name="nik" placeholder="123123123123">
@@ -207,16 +192,16 @@
             <?php else: ?>
             <div class="mb-3">
                 <label for="nik" class="form-label fw-bold">NIK</label>
-                <input type="text" class="form-control formborder" id="nik" name="nik" value="<?php echo e(session('nik')); ?>">
+                <input type="text" class="form-control formborder" id="nik" name="nik" value="<?php echo e($users->nik); ?>">
             </div>
             <?php endif; ?>
             <div class="mb-3">
                 <label for="pass" class="form-label fw-bold">Password</label>
-                <input type="pass" class="form-control formborder" id="pass" name="pass">
+                <input type="password" class="form-control formborder" id="pass" name="pass">
             </div>
             <div class="mb-3">
                 <label for="passcon" class="form-label fw-bold">Password Confirm</label>
-                <input type="passcon" class="form-control formborder" id="passcon" name="passcon">
+                <input type="password" class="form-control formborder" id="passcon" name="passcon">
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary d-grid gap-2 col-6 mx-auto formborder">Update Profile</button>

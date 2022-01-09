@@ -17,4 +17,21 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/popper.min.js"></script>
 
-    
+    <div class="loginadmin">
+        <div class="boxadmin shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="mb-5">
+                <h3 class="text-center">Login Admin</h3>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label fw-bold">Email address</label>
+                <input type="email" class="form-control formborder" id="email" name="email"
+                    placeholder="username@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="pass" class="form-label fw-bold">Password</label>
+                <input type="password" class="form-control formborder" id="pass" name="pass"
+                    placeholder="Password">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary d-grid gap-2 col-6 mx-auto formborder">Login</button>
+            </div>

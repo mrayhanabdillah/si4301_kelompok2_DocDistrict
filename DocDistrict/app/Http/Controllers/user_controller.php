@@ -136,11 +136,11 @@ class user_controller extends Controller
                 // // Session::put('nik', $data ->nik);
 
                 
-                return redirect("/");
+                return redirect("/")->with('berhasil_update','Profile anda berhasil di update!');
             }
-            return redirect("/user/{{ Session::get('user')['id'] }}/edit")->with('passsalah1','Gagal Update! Password anda salah!');
+            return redirect("/")->with('passsalah1','Gagal Update! Password anda salah!');
         }
-        return redirect("/user/{{ Session::get('user')['id'] }}/edit")->with('passsalah2','Gagal Update! Password dan Password Confirm anda tidak sama!');
+        return redirect("/")->with('passsalah2','Gagal Update! Password dan Password Confirm anda tidak sama!');
     }
 
     /**

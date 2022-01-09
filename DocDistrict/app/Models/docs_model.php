@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class docs_model extends Model
 {
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_doc';
     protected $table = "document";
     public $timestamps = false;
     protected $fillable = [

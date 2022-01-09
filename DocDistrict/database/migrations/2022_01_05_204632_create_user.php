@@ -36,6 +36,17 @@ class CreateUser extends Migration
             $table->string('email');
             $table->string('password');
         });
+
+        Schema::create('mydocument', function (Blueprint $table) {
+            $table->bigIncrements('id_mydoc')->unsigned();
+            $table->foreignId('id_doc');
+            $table->foreignId('id_user');
+            $table->string('status');
+            $table->timestamp('created_at');
+
+            $table->foreign('id_doc')->references('id_doc')->on('document');
+            $table->foreign('id_user')->references('id')->on('user');
+        });
     }
 
     /**
@@ -47,6 +58,8 @@ class CreateUser extends Migration
     {
         Schema::dropIfExists('user');
         Schema::dropIfExists('document');
+        Schema::dropIfExists('admin');
+        Schema::dropIfExists('mydocument');
         
     }
 }

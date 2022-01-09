@@ -42,15 +42,15 @@
                         </a>
                         @if (session('login'))
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Surat Keterangan Kematian</a></li>
+                                <li><a class="dropdown-item" href="/document/1">Surat Keterangan Kematian</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Surat Pengajuan Bansos dan Beasiswa</a></li>
+                                <li><a class="dropdown-item" href="/document/2">Surat Pengajuan Bansos dan Beasiswa</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Kartu Keluarga</a></li>
+                                <li><a class="dropdown-item" href="/document/3">Kartu Keluarga</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -107,7 +107,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ $user -> nama }}
+                            <i class="fa fa-user" aria-hidden="true"></i> {{ $user -> nama }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/user/{{ session('id') }}/edit">Profile</a></li>
@@ -152,6 +152,25 @@
     @if (session('logout'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session('logout') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    @if (session('passsalah1'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('passsalah1') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if (session('passsalah2'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('passsalah2') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if (session('berhasil_update'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('berhasil_update') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
