@@ -64,6 +64,9 @@
                                 </li>
                                 <li><a class="dropdown-item" href="#">Pembuatan SKCK</a></li>
                             </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">My Document</a>
+                            </li>
                         @else
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Keterangan Kematian</a></li>

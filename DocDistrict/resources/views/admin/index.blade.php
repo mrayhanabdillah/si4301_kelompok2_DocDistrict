@@ -17,21 +17,14 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/popper.min.js"></script>
 
-    <div class="navtop">
-        <ul>
-            <li><a class="list">test</a></li>
-            <li><a class="list">test</a></li>
-            <li><a class="list">test</a></li>
-    </div>
-
     <div class="sidenav">
         <header>Dashboard Admin</header>
         <ul>
+            <li><a class="active" href="#">Artikel</a></li>
+            <li><a href="#">Dokumen Warga</a></li>
+            <li><a href="#">Dokumen Desa</a></li>
+            <li><a href="#">Dokumen Penting</a></li>
             <li><a href="{{route('logoutAdmin')}}">Logout</a></li>
-            <li><a class="active" href="#">Overview</a></li>
-            <li><a href="#">Penjualan</a></li>
-            <li><a href="#">Pengeluaran</a></li>
-            <li><a href="#">Produk</a></li>
         </ul>
     </div>
 

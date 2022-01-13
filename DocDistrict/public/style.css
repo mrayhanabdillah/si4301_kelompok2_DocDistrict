@@ -103,7 +103,7 @@ form i {
 
 .mainboard{
     position: absolute;
-    padding: 0px 0px 0px 250px;
+    padding: 100px 0px 0px 275px;
 }
 
 .navtop{
@@ -125,7 +125,7 @@ form i {
     height: 100%;
     width: 100%;
     line-height: 50px;
-    font-size: 20px;
+    font-size: 30px;
     color: black;
     padding-left: 50px;
     padding-right: 50px;
@@ -137,6 +137,7 @@ form i {
     background: silver;
     color:white;
     transition: 0.4s;
+    border-radius: 50px;
 }
 
 

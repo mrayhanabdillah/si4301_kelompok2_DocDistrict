@@ -41,7 +41,7 @@
                         </a>
                         @if (session('login'))
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/document/1">Surat Keterangan Kematian</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=1">Surat Keterangan Kematian</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -139,20 +139,39 @@
 
     <div class="container sm box3 shadow-lg p-3 mb-5 bg-body rounded">
         <h3 class="text-center">{{$docs->title_doc}}</h3>
-        <div class="row">
-            <div class="col">
+        <form action="{{ route('addDoc') }}" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="id_doc" class="form-label fw-bold">ID Dokumen</label>
+                        <input type="text" class="form-control formborder" id="id_doc" name="id_doc"
+                            value="{{$docs->id_doc}}" readonly>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="namaSurat" class="form-label fw-bold">Nama Surat</label>
+                        <input type="text" class="form-control formborder" id="namaSurat" name="namaSurat"
+                            value="{{$docs->title_doc}}" readonly>
+                    </div>
+                </div>
                 <div class="mb-3">
-                    <label for="id_doc" class="form-label fw-bold">ID Dokumen</label>
-                    <input type="text" class="form-control formborder" id="id_doc" name="id_doc"
-                        value="{{$docs->id_doc}}">
+                    <label for="email" class="form-label fw-bold">Email</label>
+                    <input type="email" class="form-control formborder" id="email" name="email"
+                        value="{{ $user->email}}">
+                </div>
+                <div class="mb-3">
+                    <label for="nama" class="form-label fw-bold">Nama Pengaju</label>
+                    <input type="text" class="form-control formborder" id="nama" name="nama" value="{{ $user->nama}}">
+                </div>
+                <div class="mb-3">
+                    <label for="noHP" class="form-label fw-bold">No Handphone</label>
+                    <input type="text" class="form-control formborder" id="noHP" name="noHP" value="{{ $user->noHP}}">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary d-grid gap-2 col-6 mx-auto formborder">Ajukan
+                        Surat</button>
                 </div>
             </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="id_doc" class="form-label fw-bold">ID Dokumen</label>
-                    <input type="text" class="form-control formborder" id="id_doc" name="id_doc"
-                        value="{{$docs->id_doc}}">
-                </div>
-            </div>
-        </div>
+        </form>
     </div>

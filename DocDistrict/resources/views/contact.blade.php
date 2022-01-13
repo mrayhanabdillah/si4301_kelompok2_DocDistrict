@@ -129,4 +129,8 @@
         </div>
     </nav>
 
+    <div class="container sm box3 shadow-lg p-3 mb-5 bg-body rounded">
+        <h3 class="text-center">Contact Us</h3>
+        
+
     <script src="{{asset('app.js')}}"></script>
