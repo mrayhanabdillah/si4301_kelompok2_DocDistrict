@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2022 at 02:18 PM
+-- Generation Time: Jan 13, 2022 at 09:06 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -24,6 +24,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id_admin` bigint(20) UNSIGNED NOT NULL,
+  `nama_admin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `document`
+--
+
+CREATE TABLE `document` (
+  `id_doc` bigint(20) UNSIGNED NOT NULL,
+  `title_doc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc_doc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `document`
+--
+
+INSERT INTO `document` (`id_doc`, `title_doc`, `desc_doc`) VALUES
+(1, 'Surat Pengajuan Keterangan Kematian', 'Surat untuk mengajukan keterangan kematian ke kantor desa cipanas'),
+(2, 'Surat Pengajuan Bansos dan Beasiswa', 'Surat untuk mengajukan bantuan sosial dan beasiswa ke kantor desa'),
+(3, 'Surat Pengajuan Kartu Keluarga', 'Surat untuk mengajukan pembuatan kartu keluarga ke kantor desa'),
+(4, 'Surat Pengajuan Kehilangan', 'Surat untuk mengajukan kehilangan ke kantor polisi'),
+(5, 'Surat Pengajuan Akta Lahir', 'Surat untuk mengajukan pembuatan akta lahir ke kantor desa'),
+(6, 'Surat Pengajuan Pembuatan SKCK', 'Surat untuk mengajukan pembuatan SKCK ke kantor polisi');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -39,7 +76,21 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(3, '2022_01_05_204632_create_user', 2);
+(2, '2022_01_05_204632_create_user', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mydocument`
+--
+
+CREATE TABLE `mydocument` (
+  `id_mydoc` bigint(20) UNSIGNED NOT NULL,
+  `id_doc` bigint(20) UNSIGNED NOT NULL,
+  `id_user` bigint(20) UNSIGNED NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -81,17 +132,37 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama`, `email`, `password`, `ttl`, `noHP`, `alamat`, `nik`) VALUES
-(1, 'Muhammad Rayhan Abdillah tes', 'rayhan.abdillah81@gmail.com', 'rayhan81', '2001-04-07', '081547276922', 'Jl Sribentang', '3423423324');
+(1, 'Muhammad Rayhan Abdillah', 'rayhan.abdillah81@gmail.com', 'rayhan81', NULL, '081547276922', NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indexes for table `document`
+--
+ALTER TABLE `document`
+  ADD PRIMARY KEY (`id_doc`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mydocument`
+--
+ALTER TABLE `mydocument`
+  ADD PRIMARY KEY (`id_mydoc`),
+  ADD KEY `mydocument_id_doc_foreign` (`id_doc`),
+  ADD KEY `mydocument_id_user_foreign` (`id_user`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -112,10 +183,28 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `document`
+--
+ALTER TABLE `document`
+  MODIFY `id_doc` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `mydocument`
+--
+ALTER TABLE `mydocument`
+  MODIFY `id_mydoc` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -128,6 +217,17 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `user`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `mydocument`
+--
+ALTER TABLE `mydocument`
+  ADD CONSTRAINT `mydocument_id_doc_foreign` FOREIGN KEY (`id_doc`) REFERENCES `document` (`id_doc`),
+  ADD CONSTRAINT `mydocument_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
