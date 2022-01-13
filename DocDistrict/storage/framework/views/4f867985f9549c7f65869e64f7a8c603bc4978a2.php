@@ -42,15 +42,15 @@
                         </a>
                         <?php if(session('login')): ?>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/document/1">Surat Keterangan Kematian</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=1">Surat Keterangan Kematian</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/document/2">Surat Pengajuan Bansos dan Beasiswa</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=2">Surat Pengajuan Bansos dan Beasiswa</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/document/3">Kartu Keluarga</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=3">Kartu Keluarga</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -153,6 +153,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
+    <?php if(session('gagal_regis')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo e(session('gagal_regis')); ?>
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
     <?php if(session('logout')): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <?php echo e(session('logout')); ?>
@@ -171,6 +178,13 @@
     <?php if(session('passsalah2')): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <?php echo e(session('passsalah2')); ?>
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+    <?php if(session('tidak_terdaftar')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo e(session('tidak_terdaftar')); ?>
 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

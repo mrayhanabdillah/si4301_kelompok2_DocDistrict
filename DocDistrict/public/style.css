@@ -39,6 +39,15 @@ form i {
     cursor: pointer;
 }
 
+/* STYLE ADMIN */
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+  }
+
 .loginadmin{
     display: flex;
     justify-content:center;
@@ -53,3 +62,81 @@ form i {
     height: 30rem;
     background: slategrey;
 }
+
+.sidenav{
+  position: absolute;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #149BFC;
+  user-select: none;
+  z-index: 2;
+}
+
+.sidenav header{
+    font-size: 22px;
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    background-color: #0068b3;
+}
+
+.sidenav ul a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: white;
+    padding-left: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.sidenav ul a:hover{
+    padding-left: 50px;
+    background: white;
+    color: #000;
+    border-radius: 50px;
+    transition: 0.4s;
+}
+
+.mainboard{
+    position: absolute;
+    padding: 0px 0px 0px 250px;
+}
+
+.navtop{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    text-align: right;
+    background: white;
+    padding-right: 100px;
+}
+
+.navtop ul li{
+    display: inline;
+    line-height:50px;
+}
+
+.list{
+    display: inline;
+    height: 100%;
+    width: 100%;
+    line-height: 50px;
+    font-size: 20px;
+    color: black;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.list:hover{
+    background: silver;
+    color:white;
+    transition: 0.4s;
+}
+
+

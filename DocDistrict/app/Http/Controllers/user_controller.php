@@ -36,12 +36,16 @@ class user_controller extends Controller
 
     public function login(Request $request){
         $data = users_model::where('email',$request->email)->firstOrFail();
-        if($request->password == $data->password){
-            session(['login' => true]);
-            session(['id' => $data -> id]);
-            return redirect('/')->with('berhasil_login','Berhasil Login!');
+        if (users_model::where('email',$request->email)->exists()){
+            if($request->password == $data->password){
+                session(['login' => true]);
+                session(['id' => $data -> id]);
+                return redirect('/')->with('berhasil_login','Berhasil Login!');
+            }else{
+                return redirect('/')->with('gagal','Email atau Password salah!');
+            }
         }else{
-            return redirect('/')->with('gagal','Email atau Password salah!');
+            return redirect('/')->with('tidak_terdaftar','Email anda belum terdaftar');
         }
     }
 
@@ -69,14 +73,17 @@ class user_controller extends Controller
      */
     public function store(Request $request)
     {
-        users_model::create([
-            'nama' => $request ->nama,
-            'email' => $request ->email,
-            'password' => $request ->pass,
-            'noHP' => $request ->noHP
-        ]);
-
-        return redirect('/')->with('berhasil_regis','Berhasil Registrasi!');
+        if (users_model::where('email',$request->email)->exists()){
+            return redirect('/')->with('gagal_regis','Email sudah digunakan!');
+        }else{
+            users_model::create([
+                'nama' => $request ->nama,
+                'email' => $request ->email,
+                'password' => $request ->pass,
+                'noHP' => $request ->noHP
+            ]);
+            return redirect('/')->with('berhasil_regis','Berhasil Registrasi!');
+        }
     }
 
     /**

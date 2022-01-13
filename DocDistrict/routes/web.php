@@ -61,5 +61,10 @@ Route::get('/guide', function () {
 Route::resource('/user', user_controller::class);
 Route::post('login', 'user_controller@login')->name('login');
 Route::get('logout', 'user_controller@logout')->name('logout');
-Route::get('/document/{id_doc}','doc_controller@show');
+Route::get('/document','doc_controller@show');
 
+// ROUTE ADMIN
+
+Route::get('/index-admin','admin_controller@index');
+Route::post('/login-admin','admin_controller@loginAdmin');
+Route::get('logoutAdmin', 'admin_controller@logout')->name('logoutAdmin');
