@@ -14,6 +14,6 @@ class doc_controller extends Controller
         $id = session('id');
         $user = users_model::where('id',$id)->firstOrFail();
         $docs = docs_model::where('id_doc',$id_doc)->firstOrFail();
-        return view('doc', compact('docs','user'));
+        return view('doc.doc', compact('docs','user'));
     }
 }

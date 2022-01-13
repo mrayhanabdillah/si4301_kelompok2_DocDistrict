@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class users_model extends Model
@@ -19,4 +18,9 @@ class users_model extends Model
         'alamat',
         'nik'
     ];
+
+    public function mydoc()
+    {
+        return $this->hasMany(mydocs_model::class);
+    }
 }

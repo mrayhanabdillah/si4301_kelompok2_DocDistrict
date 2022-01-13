@@ -8,6 +8,7 @@
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="gambar/logo.png">
     <title>
         Desa Cipanas | About
     </title>
@@ -18,6 +19,7 @@
     <script src="js/popper.min.js"></script>
 
     @extends('modal')
+
 
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #149BFC;">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -32,7 +34,7 @@
                                 style="height: 36px; width: 64px;"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -41,31 +43,34 @@
                         </a>
                         @if (session('login'))
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Surat Keterangan Kematian</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=1">Surat Pengajuan Keterangan Kematian</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Surat Pengajuan Bansos dan Beasiswa</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=2">Surat Pengajuan Bansos dan Beasiswa</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Kartu Keluarga</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=3">Surat Pengajuan Kartu Keluarga</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Surat Pengajuan Kehilangan</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=4">Surat Pengajuan Kehilangan</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Akta Lahir</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=5">Surat Pengajuan Akta Lahir</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Pembuatan SKCK</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=6">Surat Pengajuan Pembuatan SKCK</a></li>
                             </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('mydoc') }}">My Document</a>
+                            </li>
                         @else
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Keterangan Kematian</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Keterangan Kematian</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -73,7 +78,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Kartu Keluarga</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Kartu Keluarga</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -81,11 +86,11 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Akta Lahir</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Akta Lahir</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Pembuatan SKCK</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Pembuatan SKCK</a></li>
                             </ul>
                         @endif
                     </li>

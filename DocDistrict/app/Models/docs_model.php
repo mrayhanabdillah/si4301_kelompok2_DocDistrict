@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class docs_model extends Model
@@ -15,4 +14,9 @@ class docs_model extends Model
         'title_doc', 
         'desc_doc'
     ];
+
+    public function mydoc()
+    {
+        return $this->hasMany(mydocs_model::class);
+    }
 }

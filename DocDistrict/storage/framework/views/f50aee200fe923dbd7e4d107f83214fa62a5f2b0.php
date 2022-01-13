@@ -8,6 +8,7 @@
     <link href="<?php echo e(asset('css/bootstrap.css')); ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo e(asset('style.css')); ?>">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="gambar/logo.png">
     <title>
         Desa Cipanas | Guide
     </title>
@@ -32,7 +33,7 @@
                                 style="height: 36px; width: 64px;"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -40,54 +41,66 @@
                             Documents
                         </a>
                         <?php if(session('login')): ?>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Surat Keterangan Kematian</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Surat Pengajuan Bansos dan Beasiswa</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Kartu Keluarga</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Surat Pengajuan Kehilangan</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Akta Lahir</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Pembuatan SKCK</a></li>
-                            </ul>
-                        <?php else: ?>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Keterangan Kematian</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Bansos dan Beasiswa</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Kartu Keluarga</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Kehilangan</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Akta Lahir</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Pembuatan SKCK</a></li>
-                            </ul>
-                        <?php endif; ?> 
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/document?id_doc=1">Surat Pengajuan Keterangan
+                                    Kematian</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/document?id_doc=2">Surat Pengajuan Bansos dan
+                                    Beasiswa</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/document?id_doc=3">Surat Pengajuan Kartu Keluarga</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/document?id_doc=4">Surat Pengajuan Kehilangan</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/document?id_doc=5">Surat Pengajuan Akta Lahir</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/document?id_doc=6">Surat Pengajuan Pembuatan SKCK</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo e(route('mydoc')); ?>">My Document</a>
+                    </li>
+                    <?php else: ?>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Keterangan Kematian</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Bansos dan Beasiswa</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Kartu Keluarga</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Kehilangan</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Akta Lahir</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Pembuatan SKCK</a></li>
+                    </ul>
+                    <?php endif; ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>
@@ -102,10 +115,10 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <?php if(session('login')): ?>
+                    <?php if(session('login')): ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-user" aria-hidden="true"></i> <?php echo e($user -> nama); ?>
 
                         </a>
@@ -117,14 +130,16 @@
                             <li><a class="dropdown-item" href="<?php echo e(route('logout')); ?>">Logout</a></li>
                         </ul>
                     </li>
-                <?php else: ?>
+                    <?php else: ?>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light formborder" data-bs-toggle="modal" data-bs-target="#login">Login</a>
+                        <a class="btn btn-outline-light formborder" data-bs-toggle="modal"
+                            data-bs-target="#login">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light formborder" style="margin-left:5px;" data-bs-toggle="modal" data-bs-target="#signUp">Sign Up</a>
+                        <a class="btn btn-outline-light formborder" style="margin-left:5px;" data-bs-toggle="modal"
+                            data-bs-target="#signUp">Sign Up</a>
                     </li>
-                <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

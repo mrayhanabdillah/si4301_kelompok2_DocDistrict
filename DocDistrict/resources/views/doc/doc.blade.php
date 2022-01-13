@@ -8,6 +8,7 @@
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="gambar/logo.png">
     <title>
         Desa Cipanas | Profile
     </title>
@@ -28,72 +29,79 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="navbar-brand" href="#"><img src="{{asset('gambar/logo.png')}}"
+                        <a class="navbar-brand" href="#"><img src="gambar/logo.png"
                                 style="height: 36px; width: 64px;"></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="1" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="color:white;">
                             Documents
                         </a>
                         @if (session('login'))
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/document?id_doc=1">Surat Keterangan Kematian</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=1">Surat Pengajuan Keterangan
+                                    Kematian</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Surat Pengajuan Bansos dan Beasiswa</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=2">Surat Pengajuan Bansos dan
+                                    Beasiswa</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Kartu Keluarga</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=3">Surat Pengajuan Kartu Keluarga</a>
+                            </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Surat Pengajuan Kehilangan</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=4">Surat Pengajuan Kehilangan</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Akta Lahir</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=5">Surat Pengajuan Akta Lahir</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Pembuatan SKCK</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=6">Surat Pengajuan Pembuatan SKCK</a>
+                            </li>
                         </ul>
-                        @else
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
-                                    Keterangan Kematian</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
-                                    Pengajuan Bansos dan Beasiswa</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Kartu
-                                    Keluarga</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
-                                    Pengajuan Kehilangan</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Akta
-                                    Lahir</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="" data-bs-toggle="modal"
-                                    data-bs-target="#login">Pembuatan SKCK</a></li>
-                        </ul>
-                        @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('mydoc') }}">My Document</a>
+                    </li>
+                    @else
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Keterangan Kematian</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Bansos dan Beasiswa</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Kartu Keluarga</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Kehilangan</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Akta Lahir</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat
+                                Pengajuan Pembuatan SKCK</a></li>
+                    </ul>
+                    @endif
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>
@@ -112,7 +120,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-user" aria-hidden="true"></i> {{$user->nama}}
+                            <i class="fa fa-user" aria-hidden="true"></i> {{ $user -> nama }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/user/{{ session('id') }}/edit">Profile</a></li>
@@ -140,6 +148,7 @@
     <div class="container sm box3 shadow-lg p-3 mb-5 bg-body rounded">
         <h3 class="text-center">{{$docs->title_doc}}</h3>
         <form action="{{ route('addDoc') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="row">
                 <div class="col">
                     <div class="mb-3">

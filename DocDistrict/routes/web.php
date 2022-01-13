@@ -65,6 +65,7 @@ Route::get('logout', 'user_controller@logout')->name('logout');
 // ROUTE DOCUMENT
 Route::get('/document','doc_controller@show');
 Route::post('addDoc','mydoc_controller@store')->name('addDoc');
+Route::get('mydoc','mydoc_controller@showmyDoc')->name('mydoc');
 
 // ROUTE ADMIN
 

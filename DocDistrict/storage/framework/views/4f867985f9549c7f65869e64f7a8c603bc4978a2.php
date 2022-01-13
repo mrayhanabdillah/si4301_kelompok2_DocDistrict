@@ -42,7 +42,7 @@
                         </a>
                         <?php if(session('login')): ?>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/document?id_doc=1">Surat Keterangan Kematian</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=1">Surat Pengajuan Keterangan Kematian</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -50,7 +50,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/document?id_doc=3">Kartu Keluarga</a></li>
+                                <li><a class="dropdown-item" href="/document?id_doc=3">Surat Pengajuan Kartu Keluarga</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -58,15 +58,18 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Akta Lahir</a></li>
+                                <li><a class="dropdown-item" href="#">Surat Pengajuan Akta Lahir</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Pembuatan SKCK</a></li>
+                                <li><a class="dropdown-item" href="#">Surat Pengajuan Pembuatan SKCK</a></li>
                             </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo e(route('mydoc')); ?>">My Document</a>
+                            </li>
                         <?php else: ?>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Keterangan Kematian</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Keterangan Kematian</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -74,7 +77,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Kartu Keluarga</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Kartu Keluarga</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -82,11 +85,11 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Akta Lahir</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Akta Lahir</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Pembuatan SKCK</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#login">Surat Pengajuan Pembuatan SKCK</a></li>
                             </ul>
                         <?php endif; ?>
                     </li>
