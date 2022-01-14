@@ -20,8 +20,8 @@
     <div class="sidenav">
         <header>Dashboard Admin</header>
         <ul>
-            <li><a class="active" href="#">Artikel</a></li>
-            <li><a href="#">Dokumen Warga</a></li>
+            <li><a href="/artikel">Artikel</a></li>
+            <li><a href="/DocWarga">Dokumen Warga</a></li>
             <li><a href="#">Dokumen Desa</a></li>
             <li><a href="#">Dokumen Penting</a></li>
             <li><a href="{{route('logoutAdmin')}}">Logout</a></li>
@@ -29,4 +29,4 @@
     </div>
 
     <div class="mainboard">
-        <h3>Test</h3>
+        <h3 class="text-center">Welcome To Dashboard Admin</h3>

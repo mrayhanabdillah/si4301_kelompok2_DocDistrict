@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\admin_model;
+use App\Models\mydocs_model;
 
 class admin_controller extends Controller
 {
@@ -22,7 +23,7 @@ class admin_controller extends Controller
         if (admin_model::where('email',$request->email)->exists()){
             if($request->pass == $data->password){
                 session(['loginAdmin' => true]);
-                session(['id_admin' => $data -> id]);
+                session(['id_admin' => $data -> id_admin]);
                 return redirect('/index-admin')->with('berhasil_login','Berhasil Login!');
             }else{
                 return redirect('/login-admin')->with('gagal','Email atau Password salah!');
@@ -30,6 +31,25 @@ class admin_controller extends Controller
         }else{
             return redirect('/login-admin')->with('tidak_terdaftar','Email anda belum terdaftar');
         }
+    }
+
+    public function docWarga(){
+        $docs = mydocs_model::orderby('id_mydoc','asc')->get();
+        return view('admin.docWarga',compact('docs'));
+    }
+
+    public function terima($id){
+        mydocs_model::find($id)->update([
+            'status'=> "Siap"
+        ]);
+        return redirect('/DocWarga');
+    }
+
+    public function tolak($id){
+        mydocs_model::find($id)->update([
+            'status'=> "Di Tolak"
+        ]);
+        return redirect('/DocWarga');
     }
 
     public function logout(Request $request){

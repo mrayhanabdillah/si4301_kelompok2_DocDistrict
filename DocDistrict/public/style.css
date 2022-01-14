@@ -64,7 +64,7 @@ form i {
 }
 
 .sidenav{
-  position: absolute;
+  position: fixed;
   left: 0;
   width: 250px;
   height: 100%;
@@ -101,9 +101,17 @@ form i {
     transition: 0.4s;
 }
 
+.sidenav ul a.active {
+    color: #000;
+    background: white;
+    border-radius: 50px;
+    padding-left: 50px;
+  }
+
 .mainboard{
     position: absolute;
-    padding: 100px 0px 0px 275px;
+    padding: 100px 0px 0px 250px;
+    width: 100%;
 }
 
 .navtop{

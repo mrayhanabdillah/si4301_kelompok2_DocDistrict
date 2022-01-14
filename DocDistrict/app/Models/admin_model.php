@@ -15,4 +15,9 @@ class admin_model extends Model
         'email',
         'password'
     ];
+
+    public function artikel()
+    {
+        return $this->hasMany(artikel_model::class);
+    }
 }

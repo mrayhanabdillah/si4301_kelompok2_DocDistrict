@@ -108,9 +108,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/guide">Guide</a>
-                    </li>
                 </ul>
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">

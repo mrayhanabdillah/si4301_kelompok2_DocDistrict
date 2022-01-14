@@ -65,7 +65,8 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="/document?id_doc=6">Surat Pengajuan Pembuatan SKCK</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=6">Surat Pengajuan Pembuatan SKCK</a>
+                            </li>
                         </ul>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('mydoc') }}">My Document</a>
@@ -107,9 +108,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/guide">Guide</a>
                     </li>
                 </ul>
             </div>
@@ -153,24 +151,47 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">{{ $i->doc->title_doc }}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p>Status:</p>
-                        <p>{{ $i -> status}}</p>
+                        <p class="card-text">{{ $i->doc->desc_doc }}</p>
                         @if (($i->status) == "Belum Siap")
-                        <a class="btn btn-primary d-grid gap-2 col-6 mx-auto formborder" href="#">Update</a>
-                        <a href="#" class="btn btn-secondary d-grid gap-2 col-6 mx-auto formborder disabled" tabindex="-1" aria-disabled="true" role="button" data-bs-toggle="button">Download</a>
+                        <p class="fw-bold">Status:</p>
+                        <p class="fw-bold" style="color:red;">{{ $i -> status}}</p>
+                        <form action="/mydoc/delete/{{ $i-> id_mydoc}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger formborder" type="submit">Hapus</button>
+                            <a href="#" class="btn btn-secondary formborder disabled" tabindex="-1" aria-disabled="true"
+                                role="button" data-bs-toggle="button">Download</a>
+                        </form>
+                        @elseif (($i->status) == "Di Tolak")
+                        <p class="fw-bold">Status:</p>
+                        <p class="fw-bold" style="color:red;">{{ $i -> status}}</p>
+                        <form action="/mydoc/delete/{{ $i-> id_mydoc}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger formborder" type="submit">Hapus</button>
+                            <a href="#" class="btn btn-secondary formborder disabled" tabindex="-1" aria-disabled="true"
+                                role="button" data-bs-toggle="button">Download</a>
+                        </form>
                         @else
-                        <a class="btn btn-primary d-grid gap-2 col-6 mx-auto formborder" href="">Update</a>
-                        <a class="btn btn-secondary d-grid gap-2 col-6 mx-auto formborder" href="">Download</a> 
+                        <p class="fw-bold">Status:</p>
+                        <p class="fw-bold">{{ $i -> status}}</p>
+                        <form action="/mydoc/delete/{{ $i-> id_mydoc}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger formborder" type="submit">Hapus</button>
+                        </form>
+                        <form action="/download/{{ $i-> id_mydoc}}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary formborder" type="submit">Download</button>
+                        </form>
                         @endif
                     </div>
                 </div>
             </div>
             @endforeach
+            @else
+            <br>
+            <h5 class="text-center">Tidak Ada Dokumen</h5>
+            @endif
         </div>
-        @else
-        <br>
-        <h5 class="text-center">Tidak Ada Dokumen</h5>
-        @endif
     </div>

@@ -65,7 +65,8 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="/document?id_doc=6">Surat Pengajuan Pembuatan SKCK</a></li>
+                            <li><a class="dropdown-item" href="/document?id_doc=6">Surat Pengajuan Pembuatan SKCK</a>
+                            </li>
                         </ul>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('mydoc') }}">My Document</a>
@@ -108,9 +109,6 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="/contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/guide">Guide</a>
-                    </li>
                 </ul>
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -146,6 +144,17 @@
 
     <div class="container sm box3 shadow-lg p-3 mb-5 bg-body rounded">
         <h3 class="text-center">Contact Us</h3>
+        <div class="row">
+            <div class="col">
+                <img src="gambar/cipanas.jpg" style="height:30rem;width:30rem;">
+            </div>
+            <div class="col">
+                <p>Kontak kami berisi cara menghubungi desa, seperti contoh berikut :</p>
+                <p>Alamat : Kompleks Perkantoran Desa Cipanas Jalan Pahlawan No. 73</p>
+                <p>No Telepon : 081992513599</p>
+                <p>Email : kasi_pemerintahan@desa.cipanas.id</p>
+            </div>
+        </div>
+    </div>
 
-
-        <script src="{{asset('app.js')}}"></script>
+    <script src="{{asset('app.js')}}"></script>

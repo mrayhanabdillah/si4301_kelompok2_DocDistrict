@@ -51,7 +51,8 @@ class user_controller extends Controller
 
 
     public function logout(Request $request){
-        $request->session()->flush();
+        $request->session()->forget('login');
+        $request->session()->forget('id');
         return redirect('/')->with('logout','Anda telah melakukan logout!');
     }
 

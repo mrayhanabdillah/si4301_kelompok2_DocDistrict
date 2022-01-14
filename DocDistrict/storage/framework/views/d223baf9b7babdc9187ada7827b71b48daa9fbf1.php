@@ -34,7 +34,7 @@
                                 style="height: 36px; width: 64px;"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -99,9 +99,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/guide">Guide</a>
                     </li>
                 </ul>
             </div>
@@ -171,23 +168,6 @@
             kepresidenan Cipanas .</p>
     </div>
 
-    <div class="container-fluid footer">
-        <div class="container sm">
-            <div class="container" style="width: 100%; height: 3px;background:white;"></div>
-            <div class="row">
-                <div class="col">
-                    <img src="gambar/logo.png" class="w-75 h-75">
-                </div>
-                <div class="col">
-                    <i class="fa fa-instagram" style="width:100px;height:50px;"></i>
-                </div>
-                <div class="col">
-                    Column
-                </div>
-            </div>
-            <div class="container" style="width: 100%; height: 3px;background:white;"></div>
-        </div>
-    </div>
 
     <script src="<?php echo e(asset('app.js')); ?>"></script>
 <?php echo $__env->make('modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\si4301_kelompok2_DocDistrict\DocDistrict\resources\views/about.blade.php ENDPATH**/ ?>
